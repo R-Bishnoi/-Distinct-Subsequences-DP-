@@ -1,5 +1,10 @@
 // Distinct Subsequences
 
+// here we are given target string and source string and we are asking that how many distinct subsequence generate means how many possible way to make 
+//target in source string
+
+
+
 // memoization 
 
 /*
