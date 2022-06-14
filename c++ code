@@ -1,0 +1,97 @@
+// Distinct Subsequences
+
+// memoization 
+
+/*
+class Solution {
+public:
+    
+   
+ int solve(vector<vector<int>>&dp,string s, string t,int i,int j){
+     
+     //i for target
+     //j for source string
+     
+     if(i<0)return 1;
+     if(j<0)return 0;
+     
+     
+    if(dp[i][j]!=-1)return dp[i][j];
+     
+     
+   if(s[j]==t[i]){
+       return dp[i][j]=solve(dp,s,t,i-1,j-1)+solve(dp,s,t,i,j-1);
+   }  
+     
+     else 
+         return dp[i][j]=solve(dp,s,t,i,j-1);
+         
+ }   
+    
+        
+    
+int numDistinct(string s, string t) {
+   
+    //n  row , j
+   int n=s.size();
+    //m col ,i
+   int m=t.size();
+    
+    vector<vector<int>>dp(m,vector<int>(n+1,-1));
+    
+ return solve(dp,s,t,m-1,n-1);
+    
+    
+    }   
+    
+};
+
+
+*/
+
+
+
+
+
+/*
+class Solution {
+public:
+        
+int numDistinct(string s, string t) {
+   
+    //n  col , j
+   int n=s.size();
+    //m row ,i
+   int m=t.size();
+    
+    vector<vector<double>>dp(m+1,vector<double>(n+1,0));
+    
+ //base case
+    for(int j=0;j<=n;j++)dp[0][j]=1;
+  //  for(int i=1;i<=m;i++)dp[i][0]=0;
+    
+// tabulation
+    
+    for(int i=1;i<=m;i++){
+        for(int j=1;j<=n;j++){
+            
+           if(s[j-1]==t[i-1]){
+               dp[i][j]=dp[i-1][j-1]+dp[i][j-1];
+           } 
+            
+            else{
+                dp[i][j]=dp[i][j-1];
+            }
+            
+        }
+    }
+    
+
+    
+    return (int)dp[m][n];
+    
+    }   
+    
+};
+
+*/
